@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="ver.css" rel="stylesheet" />
+</head>
+
+<body onload="verifyMint()">
+    <div id="logo-container" style="width: 92px; height: 75px"></div>
+    <div id="discord"  >
+    <img id="disc" src="discord.png">  
+    </div>
+    <div class="progress" id="progressBar">
+        <div class="progress-value"></div>
+    </div>
+    <script src="metamask.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+</body>
+
+<script>
+
+    const verifyMint = async ()=>{
+        if(window.ethereum !== "undefined"){
+				const accounts = await ethereum.request({method:"eth_requestAccounts"});
+				account = accounts[0];
+		}
+        const ABI = [
+	    {
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "uri",
+				"type": "string"
+			}
+		],
+		"name": "safeMint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+        ]
+        const Address = "0x4097aF75b84D600c2851ea551D5FD7c8D5e07A70";
+        window.web3 = await new Web3(window.ethereum);
+        window.contract = await new window.web3.eth.Contract(ABI,Address);
+        await window.contract.methods.safeMint(account,'https://gateway.lighthouse.storage/ipfs/QmVnSyDnerGyaXQBmtSbYSdaTbGd8xT6MACzorG71q2jWL').send({from:account});
+        
+    }
+
+
+</script>
+</html>

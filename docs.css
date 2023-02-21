@@ -1,0 +1,13 @@
+
+
+*{
+    background-color: black;
+}
+
+#language-css{
+    background-color: white;
+    color: black;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    text-align: left;
+
+}

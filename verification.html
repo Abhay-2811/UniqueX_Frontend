@@ -14,8 +14,27 @@
     <div id="discord"  >
     <img id="disc" src="discord.png">  
     </div>
-    <button class='glowing-btn'><span class='glowing-txt'>VE<span class='faulty-letter'>RI</span>FY</span></button>
+    <button class='glowing-btn' onclick="verifyDiscord()" id="glowingButton"><span class='glowing-txt'>VE<span class='faulty-letter'>RI</span>FY</span></button>
     <script src="metamask.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
 </body>
 
+<script>
+    const verifyDiscord = ()=>{
+        window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1074556416175648818&redirect_uri=http%3A%2F%2Flocalhost%3A5500%2Fauth%2F&response_type=code&scope=identify";
+    }
+    
+    const verify = async()=>{
+        var gbtn = document.getElementById("glowingButton");
+        gbtn.style.display = 'none';
+        await verifyDiscord();
+        var pbar = document.getElementById("progressBar");
+        pbar.style.display = 'flex';
+        if(window.location.href == 'http://127.0.0.1:5501/frontend/verification.html'){
+            await verifyMint();
+            window.alert("Congrats!!!, You are verified my friend.")
+        }
+    }
+
+</script>
 </html>
