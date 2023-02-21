@@ -52,7 +52,7 @@
         window.web3 = await new Web3(window.ethereum);
         window.contract = await new window.web3.eth.Contract(ABI,Address);
         await window.contract.methods.safeMint(account,'https://gateway.lighthouse.storage/ipfs/QmVnSyDnerGyaXQBmtSbYSdaTbGd8xT6MACzorG71q2jWL').send({from:account});
-        
+        window.location.href = "verified.html"
     }
 
 
