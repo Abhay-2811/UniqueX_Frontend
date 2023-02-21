@@ -48,7 +48,7 @@
 		"type": "function"
 	}
         ]
-        const Address = "0x4097aF75b84D600c2851ea551D5FD7c8D5e07A70";
+        const Address = "0x422BBe57C28B32C53E8C752408876076B2561d17";
         window.web3 = await new Web3(window.ethereum);
         window.contract = await new window.web3.eth.Contract(ABI,Address);
         await window.contract.methods.safeMint(account,'https://gateway.lighthouse.storage/ipfs/QmVnSyDnerGyaXQBmtSbYSdaTbGd8xT6MACzorG71q2jWL').send({from:account});
